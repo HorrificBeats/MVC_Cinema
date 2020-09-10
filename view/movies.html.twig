@@ -1,0 +1,82 @@
+<div>
+    <div classs='d-flex col-lg-12'>
+        <h1 classs='col-lg-2'> MOVIES </h1>
+
+        {# SEARCH  #}
+        <form classs='col-lg-2 ' id='search' method ='post'>
+            <div class="md-form mt-0 d-flex">
+                <input name='recherche' class="form-control" type="text" placeholder="Search movies" aria-label="Search">
+            </div>
+        </form>
+    </div>
+    <br>
+    
+
+  {# LOOP Basic #}
+  {# {% for films in allFilms %}
+
+        <div class="container">
+            <label><b> {{films.gettitre}} ( </b></label>
+            <label><b> {{films.getannee}} )</b></label>
+            <label><b> | {{films.getrealisateur}} </b></label>
+            <label><b> | {{acteurs.getNom}} </b></label>
+            <img src={{films.getaffiche}} style='width:45px'>
+        </div>
+
+  {% endfor %} #}
+
+
+
+  {# CAROUSEL #}
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    
+      <div class="carousel-inner col-12">
+        {# LOOP TWIG pt. toate filmele #}
+        {% for films in allFilms %}
+                {# LOOP TWIG pt. a muta "active" de pe un element pe altul #}
+                <div {% if loop.index0 == 0 %} class=" row carousel-item active  ml-5"{% else %} class="carousel-item" {% endif %} data-interval="5000">
+                    <img id='poster' src={{films.getaffiche}} class="d-block " alt="poster">
+                                          {# Teleport B+ #}
+                                            {# films = Object in Films Class #}
+                                              {# getaffiche = functia din ^^ #}
+
+                    <div id='movie_description'  class=" row carousel-caption d-none d-block ml-5 text-left">
+                        <h5><b><i>{{films.gettitre}} </i> ({{films.getannee}})</b></h5>
+                                    {# Teleport B+              Teleport B+   #}
+                        <p>by {{films.getrealisateur}}</p>
+                                {# Teleport B+ #}
+                        <div>Personnages:</div>
+                        {# ?? #}
+
+                        {# LOOP Twig pt. a citi TOATE elementele din atributul Roles din Films OBJ #}
+                        {% for roles in films.getRoles %}
+                        
+                          <div> <i> <b> {{roles.getPersonnage}} </b></i> ( {{roles.getActor.getPrenom}} {{roles.getActor.getNom}} ) </div>
+                                        {# Astfel, putem folosi METODE din alte clase, pare magie inca #}
+                        {% endfor %}
+                    </div>
+
+              </div>
+        {% endfor %}
+      </div>
+    <div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+  </div>
+
+
+
+</div>
+    {# JS BOOSTRAP #}
+    {# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> #}
+</div>
