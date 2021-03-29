@@ -16,3 +16,4 @@ if (isset($_GET['action']) && file_exists(_CTRL_ . $_GET['action'] . '.php')) {
 }
 
 include _CTRL_ . 'footer.php'; //Integrare footer
+?>
