@@ -1,4 +1,5 @@
 #CINEMA APP
+
 A movie selection platform, build with a "homemade" PHP MVC architecture and the Twig templating engine.
 
 Key features: Authentication, Registration, Dynamic data from DB, Search engine;
